@@ -34,6 +34,16 @@
 		.select-selected {
 			background-color: floralwhite;
 		}
+		.column {
+			float: left;
+			width: 33.33%;
+			padding: 10px;
+		}
+		.row:after {
+			content: "";
+			display: table;
+			clear: both;
+		}
 	</style>
 </head>
 <body>
@@ -70,9 +80,13 @@
 <center>
 <h1 style="font-family: Comorant; background-color: black; color: white; width: 500px;">Fare Guide</h1>
 <hr>
-<img src="https://www.sumitomocorp.com/mideast-africa/-/media/Images/hq/news/topics/2023/20230531/04-2_en.png?h=515&iar=0&w=915" width="400px" height="281px" style="float: left;">
+<div class="row">
+  <div class="column">
+  <img src="https://www.sumitomocorp.com/mideast-africa/-/media/Images/hq/news/topics/2023/20230531/04-2_en.png?h=515&iar=0&w=915" height="400px" width="500px" style="float: left;">
+  </div>
+  <div class="column">
 <h1 style="font-family: Comorant; background-color: black; color: white; font-size: 20px; width: 200px;">LEAVING FROM:</h1>
-<div class="select" style="width:200px;">
+<div class="select">
 	<select id="from" name="from" style="width: 200px;">
 		<option value="none">Choose</option>
 		<option value="0">North Ave.</option>
@@ -92,7 +106,7 @@
 </div>
 <br>
 <h1 style="font-family: Comorant; background-color: black; color: white; font-size: 20px; width: 200px;">GOING TO:</h1>
-<div class="select" style="width:200px;">
+<div class="select">
 	<select id="to" name="to" style="width: 200px;">
 		<option value="none">Choose</option>
 		<option value="0">North Ave.</option>
@@ -111,11 +125,9 @@
 	</select>
 	<br><br>
 	<button type="button" class="btn btn-primary" onclick="showValue()">Regular Price</button>
-	<br><br>
 	<button type="button" class="btn btn-secondary" onclick="showDiscountedValue()">Discounted Price</button>
+	<img src="https://www.mrt3.com/images/SINGLE.png" width="400px" height="286px">
 </div>
-</center>
-
 	<script>
 		function showValue(){
 			var here = document.getElementById("from").value;
@@ -126,7 +138,7 @@
 
 			var real = Math.abs(fare)
 
-			document.getElementById("show").innerHTML = "Your train fare is ₱" + real;	
+			document.getElementById("show").innerHTML = "₱" + real;	
 		}
 		function showDiscountedValue(){
 			var here = document.getElementById("from").value;
@@ -139,11 +151,20 @@
 
 			var realprice = Math.abs(dis)
 
-			document.getElementById("show").innerHTML = "Your train fare is ₱" + realprice;
+			document.getElementById("show").innerHTML = "₱" + realprice;
 		}
 	</script>
+  </div>
+  <div class="column" style="background-color: black;">
 		<div>
-			<p id="show"></p>
+			<p style="font-family: Comorant; font-size: 20px; color: white;">Ticket Price:</p>
+			<br>
+			<p id="show" style="font-size: 200px; font-family: Comorant; color: white;">₱</p>
 		</div>
+  </div>
+</div>
+<hr>
+<p style="font-family: Comorant;">© Cruz & Barcelona</p>
+</center>
 </body>
 </html>
