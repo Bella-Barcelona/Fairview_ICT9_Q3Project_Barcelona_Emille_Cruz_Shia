@@ -27,14 +27,22 @@
 		body{
 			background-color: white;
 		}
+		.select {
+			position: relative;
+			font-family: Poppins;
+		}
+		.select-selected {
+			background-color: floralwhite;
+		}
 	</style>
 </head>
 <body>
-	<nav class="navbar navbar-expand-md fixed-top" style="background-color: white; background-repeat: no-repeat; background-size: cover; background-repeat: fixed; background-position: center;">
- <div class="container-fluid">
+<nav class="navbar navbar-expand-md fixed-top" style="background-color: white; background-repeat: no-repeat; background-size: cover; background-repeat: fixed; background-position: center;">
+<div class="container-fluid">
  	<a class="navbar-brand" href="index.html"></a>
  		<div class="collapse navbar-collapse">
  			<ul class="navbar-nav me-auto">
+ 				<img src="logo.png" width="40px" height="40px">
  				<li class="nav-item">
  				<a class="nav-link" href="index.html">HOME</a> 
  				</li>
@@ -46,16 +54,96 @@
  				</li>
  			</ul>
  			<form class="d-flex">
+ 				<input class="form-control" type="text" placeholder="Search..." style="margin-right: 20px; font-family: Poppins;">
+                <button class="btn btn-dark" type="button" style="font-family: Poppins;">Search</button>
  			</form>
  		</div>
  	</div>
- </nav>
-
- 	<br><br>
- <div class="MAIN" style="height: 350px; background-image: url(https://images.pexels.com/photos/2101790/pexels-photo-2101790.jpeg);">
- 	<h1 style="color: whitesmoke; font-family: Comorant; font-size: 100px;">MANILA TRANSIT</h1>
+</nav>
+<br><br>
+<div class="MAIN" style="height: 350px; background-image: url(https://images.pexels.com/photos/2101790/pexels-photo-2101790.jpeg);">
+	<h1 style="color: whitesmoke; font-family: Comorant; font-size: 100px;">MANILA TRANSIT</h1>
 </div>
 <div style="width: 100%; height: 10px; background-color: white;"></div>
 <div style="background-image: url(https://images.pexels.com/photos/96409/pexels-photo-96409.jpeg); height: 700px;" class="MAIN"></div>
+<br>
+<center>
+<h1 style="font-family: Comorant; background-color: black; color: white; width: 500px;">Fare Guide</h1>
+<hr>
+<img src="https://www.sumitomocorp.com/mideast-africa/-/media/Images/hq/news/topics/2023/20230531/04-2_en.png?h=515&iar=0&w=915" width="400px" height="281px" style="float: left;">
+<h1 style="font-family: Comorant; background-color: black; color: white; font-size: 20px; width: 200px;">LEAVING FROM:</h1>
+<div class="select" style="width:200px;">
+	<select id="from" name="from" style="width: 200px;">
+		<option value="none">Choose</option>
+		<option value="0">North Ave.</option>
+		<option value="13">Quezon Ave.</option>
+		<option value="13">GMA Kamuning</option>
+		<option value="16">Araneta Cubao</option>
+		<option value="16">Santolan Annapolis</option>
+		<option value="20">Ortigas</option>
+		<option value="20">Shaw Blvd.</option>
+		<option value="20">Boni Ave.</option>
+		<option value="24">Guadalupe</option>
+		<option value="24">Buendia</option>
+		<option value="24">Ayala</option>
+		<option value="28">Magallanes</option>
+        <option value="28">Taft Avenue</option>
+	</select>
+</div>
+<br>
+<h1 style="font-family: Comorant; background-color: black; color: white; font-size: 20px; width: 200px;">GOING TO:</h1>
+<div class="select" style="width:200px;">
+	<select id="to" name="to" style="width: 200px;">
+		<option value="none">Choose</option>
+		<option value="0">North Ave.</option>
+		<option value="13">Quezon Ave.</option>
+		<option value="13">GMA Kamuning</option>
+		<option value="16">Araneta Cubao</option>
+		<option value="16">Santolan Annapolis</option>
+		<option value="20">Ortigas</option>
+		<option value="20">Shaw Blvd.</option>
+		<option value="20">Boni Ave.</option>
+		<option value="24">Guadalupe</option>
+		<option value="24">Buendia</option>
+		<option value="24">Ayala</option>
+		<option value="28">Magallanes</option>
+        <option value="28">Taft Avenue</option>
+	</select>
+	<br><br>
+	<button type="button" class="btn btn-primary" onclick="showValue()">Regular Price</button>
+	<br><br>
+	<button type="button" class="btn btn-secondary" onclick="showDiscountedValue()">Discounted Price</button>
+</div>
+</center>
+
+	<script>
+		function showValue(){
+			var here = document.getElementById("from").value;
+
+			var there = document.getElementById("to").value;
+
+			var fare = (here - there)
+
+			var real = Math.abs(fare)
+
+			document.getElementById("show").innerHTML = "Your train fare is ₱" + real;	
+		}
+		function showDiscountedValue(){
+			var here = document.getElementById("from").value;
+
+			var there = document.getElementById("to").value;
+
+			var fare = (here - there)
+
+			var dis = fare * 0.8
+
+			var realprice = Math.abs(dis)
+
+			document.getElementById("show").innerHTML = "Your train fare is ₱" + realprice;
+		}
+	</script>
+		<div>
+			<p id="show"></p>
+		</div>
 </body>
 </html>
