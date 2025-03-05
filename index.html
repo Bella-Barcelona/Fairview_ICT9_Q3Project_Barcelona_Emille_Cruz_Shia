@@ -143,10 +143,9 @@
     var from = document.getElementById('from').value;
     var to = document.getElementById('to').value;
 
-    // Ensure valid input is selected
+    // Checking if there is a valid input. If not, fare will display as ₱0.00
     if (from === 'none' || to === 'none') {
       document.getElementById("show").innerHTML = "₱0.00"; // If no valid input, show ₱0.00
-      return;
     }
 
     var distance = Math.abs(to - from); // Distance between the two stations
@@ -193,7 +192,6 @@
     // Checking if there is a valid input. If not, fare will display as ₱0.00
     if (from === 'none' || to === 'none') {
       document.getElementById("show").innerHTML = "₱0.00"; 
-      return;
     }
 
     var distance = Math.abs(to - from); // Distance between the two stations
